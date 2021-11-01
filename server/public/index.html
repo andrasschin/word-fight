@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Fight</title>
+</head>
+<body>
+    <h1>Welcome to Word Fight</h1>
+    <button id="btn">Search game</button>
+    <p>
+        Players online: <span id="number-of-players-online"></span>
+    </p>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="IOEvents.js"></script>
+    <script type="module" src="updateEvents.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
