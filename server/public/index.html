@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Word Fight</title>
+    <script src="https://kit.fontawesome.com/c24d1452ef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Word Fight</h1>
+    </header>
+
+    <main>
+        <section id="main-menu">
+            <h1>Main Menu</h1>
+            <p>
+                Players online: <span id="number-of-players-online"></span>
+            </p>
+            <button id="btn-search-game">Search game</button>
+            <div id="loading-icon-box">
+                <div id="loading-icon-content"></div>
+            </div>
+            <p id="game-starting"></p>
+        </section>
+
+        <section id="in-game">
+            <p id="timer"></p>
+            <p id="word-definition"></p>
+            <p id="word-hint"></p>
+            <input type="text" id="input-solution">
+            <button id="btn-submit-solution">Send</button>
+        </section>
+
+        <section id="post-game">
+            <h1>Post Game</h1>
+            <h2></h2>
+            <div id="scores">
+                <p id="your-score"></p>
+                <p id="opponents-score"></p>
+            </div>
+            <p id="result"></p>
+            <table id="post-game-summary">
+                <thead>
+                    <tr>
+                        <td>Definition</td>
+                        <td>Solution</td>
+                        <td>Your Answers</td>
+                        <td>Opponent's Answers</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+            <button id="btn-home">Home</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Check out the project on <a href="https://github.com/itsmeeandrew/word-fight" target="_blank"><i class="fab fa-github"></i>Github</a>.</p>
+    </footer>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="IOEvents.js"></script>
+    <script type="module" src="updateEvents.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
