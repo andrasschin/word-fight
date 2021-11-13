@@ -31,7 +31,7 @@ class APIHandler {
                 })
                 .then(data => {
                     if (data.title && data.title === APIHandler.badRequestMessage) {
-                        resolve(null);
+                        resolve(-1);
                     } else {
                         const definition = data[0].meanings[0].definitions[0].definition;
                         resolve(definition);
@@ -49,7 +49,7 @@ class APIHandler {
         const word = await this.fetchRandomWord();
         const definition = await this.fetchDefiniton(word);
         
-        if (definition === null) return this.getWordWithDefinition();
+        if (definition === -1) return this.getWordWithDefinition();
 
         return {
             word,

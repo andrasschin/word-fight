@@ -1,6 +1,12 @@
 export const connection = "connection";
 export const disconnect = "disconnect";
+export const setupPlayer = "setup-player";
 export const updateNumOfPlayersOnline = "update:number-of-players-online";
 export const gameSearch = "game:search";
+export const gameCancelSearch = "game:cancel-search";
 export const gameInit = "game:init";
 export const gameStart = "game:start";
+export const gameRequestNextWord = "game:request-next-word";
+export const gameSendNextWord = "game:send-next-word";
+export const gameSubmitSolution = "game:submit-solution";
+export const gameEnd = "game:end";

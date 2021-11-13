@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+/* General */
+
+:root {
+    --primary-color: rgb(20, 128, 236);
+    --secondary-color: white;
+    --font-large: 28px;
+    --font-medium: 22px;
+    --font-small: 18px;
+    --font-family: 'Roboto Mono';
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--font-family);
+    text-align: center;
+
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    flex-grow: 1;
+}
+
+main {
+    flex-grow: 8;
+}
+
+footer {
+    flex-grow: 1;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    font-family: var(--font-family);
+    font-size: var(--font-medium);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Header */
+header {
+    font-size: var(--font-large);
+}
+
+/* Main */
+/* Main menu */
+#main-menu {
+    font-size: var(--font-medium);
+}
+
+#btn-search-game {
+    padding: 15px 30px;
+}
+
+#loading-icon-box {
+    display: none;
+    width: 100px;
+    height: 10px;
+    margin: 20px auto;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#loading-icon-content {
+    position: relative;
+    height: 100%;
+    width: 20%;
+    border-radius: 5px;
+    background-color: orange;
+    animation: loading-icon-animation 1.5s ease-in-out infinite alternate;
+    animation-play-state: paused;
+}
+
+@keyframes loading-icon-animation {
+        0% {
+            left: 0%;
+        }
+    
+        4% {
+            left: 0.064%;
+        }
+    
+        8% {
+            left: 0.08%;
+        }
+    
+        18% {
+            left: -0.416%;
+        }
+    
+        20% {
+            left: -0.312%;
+        }
+    
+        28% {
+            left: 1.88%;
+        }
+    
+        30% {
+            left: 1.912%;
+        }
+    
+        38% {
+            left: -7.416%;
+        }
+    
+        40% {
+            left: -9.4%;
+        }
+    
+        60% {
+            left: 89.4%;
+        }
+    
+        62% {
+            left: 87.416%;
+        }
+    
+        70% {
+            left: 70.088%;
+        }
+    
+        72% {
+            left: 78.12%;
+        }
+    
+        80% {
+            left: 80.312%;
+        }
+    
+        82% {
+            left: 80.416%;
+        }
+    
+        90% {
+            left: 79.976%;
+        }
+    
+        92% {
+            left: 79.2%;
+        }
+    
+        100% {
+            left: 80%;
+        }
+}
+
+/* In game */
+
+#in-game {
+    display: none;
+}
+
+#timer {
+    font-size: var(--font-medium);
+}
+
+#word-definition {
+    font-size: var(--font-medium);
+}
+
+#word-hint {
+    font-size: var(--font-medium);
+}
+
+#input-solution {
+    font-size: var(--font-medium);
+    font-family: var(--font-family);
+    border: 3px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    outline: none;
+    padding: 5px 15px;
+    display: block;
+    margin: auto;
+}
+
+#input-solution:disabled {
+    background-color: gainsboro;
+}
+
+#btn-submit-solution {
+    padding: 5px 15px;
+    font-size: var(--font-small);
+    margin-top: 20px;
+}
+
+
+/* Post game */
+
+#post-game {
+    display: none;
+    font-size: var(--font-medium);
+}
+
+#post-game-summary {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    font-size: var(--font-small);
+    border-collapse: collapse;
+}
+
+#post-game-summary thead {
+    font-weight: bold;
+}
+
+#post-game-summary td {
+    padding: 20px 15px;
+    border: 1px solid var(--secondary-color);
+}
+
+#btn-home {
+    margin-top: 15px;
+    padding: 5px 15px;
+}
+
+#result {
+    font-weight: bold;
+}
+
+/* Footer */
+footer p {
+    font-size: var(--font-small);
+}
