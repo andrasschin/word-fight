@@ -48,21 +48,30 @@ socket.on(IOEvents.gameSendNextWord, payload => {
     currentTimeoutId = setTimeout(() => {
         inputSolution.disabled = true;
         sendSolution(inputSolution.value);
-    }, 15000);
+    }, 1500000);
 });
 
-btnSubmitSolution.addEventListener("click", () => {
+document.querySelector("#form-word-game").addEventListener("submit", e => {
+    e.preventDefault();
     inputSolution.disabled = true;
     const solution = inputSolution.value;
     sendSolution(solution);
 });
 
-document.addEventListener("keypress", e => {
-    if (e.key === 'Enter') {
-        inputSolution.disabled = true;
-        const solution = inputSolution.value;
-        sendSolution(solution);
+document.querySelector("#form-chat").addEventListener("submit", e => {
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+    const payload = {
+        message: data.get("message"),
+        gameId: currentGameId
     }
+    socket.emit(IOEvents.gameSendMessage, payload);
+    e.target.reset();
+});
+
+socket.on(IOEvents.gameReceiveMessage, payload => {
+    UI.changeUI(IOEvents.gameReceiveMessage, payload);
 })
 
 socket.on(IOEvents.gameEnd, payload => {

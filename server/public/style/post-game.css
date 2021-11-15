@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+#post-game {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: var(--font-medium);
+}
+
+#post-game-summary {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: var(--font-small);
+    border-collapse: collapse;
+}
+
+#post-game-summary thead {
+    font-weight: bold;
+}
+
+#post-game-summary td {
+    padding: 20px 15px;
+    border: 1px solid var(--secondary-color);
+}
+
+#btn-home {
+    padding: 10px 20px;
+}
+
+#result {
+    font-weight: bold;
+}

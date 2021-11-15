@@ -10,3 +10,5 @@ exports.gameRequestNextWord = "game:request-next-word";
 exports.gameSendNextWord = "game:send-next-word";
 exports.gameSubmitSolution = "game:submit-solution";
 exports.gameEnd = "game:end";
+exports.gameSendMessage = "game:send-message";
+exports.gameReceiveMessage = "game:receive-message";

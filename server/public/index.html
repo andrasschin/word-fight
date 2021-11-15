@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/general.css">
+    <link rel="stylesheet" href="./style/main-menu.css">
+    <link rel="stylesheet" href="./style/in-game.css">
+    <link rel="stylesheet" href="./style/post-game.css">
+    <link rel="stylesheet" href="./style/misc.css">
+
     <title>Word Fight</title>
     <script src="https://kit.fontawesome.com/c24d1452ef.js" crossorigin="anonymous"></script>
 </head>
@@ -16,32 +21,65 @@
     <main>
         <section id="main-menu">
             <h1>Main Menu</h1>
+
             <p>
-                Players online: <span id="number-of-players-online"></span>
+                Players online: <i class="fas fa-user"></i> <span id="number-of-players-online"></span>
             </p>
-            <button id="btn-search-game">Search game</button>
+            
+            <div>
+                <button id="btn-search-game">
+                    Search game
+                </button>
+            </div>
+            
             <div id="loading-icon-box">
                 <div id="loading-icon-content"></div>
             </div>
-            <p id="game-starting"></p>
+
+            <p id="game-starting">Game starting...</p>
         </section>
 
         <section id="in-game">
-            <p id="timer"></p>
-            <p id="word-definition"></p>
-            <p id="word-hint"></p>
-            <input type="text" id="input-solution">
-            <button id="btn-submit-solution">Send</button>
+            <div id="in-game-container">
+                <p id="timer">15</p>
+
+                <p id="word-definition">Something that shows us how important beauty is.</p>
+
+                <p id="word-hint">__T__A</p>
+
+                <form id="form-word-game" autocomplete="off">
+                    <input type="text" id="input-solution">
+
+                    <button id="btn-submit-solution">Send</button>
+
+                </form>
+            </div>
+
+            <div id="in-game-chat-container">
+                <div id="in-game-chat">
+                    <div id="messages">
+                        <p>You: Hi!</p>
+                        <p>Opponent: hi, glhf</p>
+                    </div>
+                    
+                    <form id="form-chat" autocomplete="off">
+                        <input type="text" name="message" id="input-chat">
+                        <button>Send</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
         <section id="post-game">
             <h1>Post Game</h1>
-            <h2></h2>
+            
             <div id="scores">
-                <p id="your-score"></p>
-                <p id="opponents-score"></p>
+                <p id="your-score">Your score: 1</p>
+                <p id="opponents-score">Opponent's score: 1</p>
             </div>
-            <p id="result"></p>
+            
+            <p id="result">It's a tie!</p>
+            
             <table id="post-game-summary">
                 <thead>
                     <tr>
@@ -52,15 +90,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <tr>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                    </tr>
+                    <tr>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                    </tr>
+                    <tr>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                    </tr>
+                    <tr>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                        <td>Demo</td>
+                    </tr>
                 </tbody>
             </table>
-            <button id="btn-home">Home</button>
+
+            <div>
+                <button id="btn-home">Home</button>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>Check out the project on <a href="https://github.com/itsmeeandrew/word-fight" target="_blank"><i class="fab fa-github"></i>Github</a>.</p>
+        <p>
+            Check out the project on 
+            <a href="https://github.com/itsmeeandrew/word-fight" target="_blank">
+                <i class="fab fa-github"></i> Github</a>.
+        </p>
     </footer>
     
     <script src="/socket.io/socket.io.js"></script>

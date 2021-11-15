@@ -64,6 +64,10 @@ io.on(IOEvents.connection, socket => {
         game.submitSolution(socket.id, payload.solution);
     });
 
+    socket.on(IOEvents.gameSendMessage, payload => {
+        io.to(payload.gameId).emit(IOEvents.gameReceiveMessage, { message: payload.message });
+    });
+
     socket.on(IOEvents.disconnect, () => {
         numOfPlayersOnline--;
         io.emit(IOEvents.updateNumOfPlayersOnline, numOfPlayersOnline);
@@ -72,5 +76,5 @@ io.on(IOEvents.connection, socket => {
 })
 
 
-// TODO: chat, limit games, Page elrendezés, light and dark theme, upper/lower
+// TODO: chat, limit games, Page elrendezés, light and dark theme, upper/lower, form -> submit, socket code structure
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

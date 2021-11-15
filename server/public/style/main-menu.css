@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+#main-menu {
+    font-size: var(--font-medium);
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#btn-search-game {
+    padding: 15px 30px;
+}
+
+#loading-icon-box {
+    visibility: hidden;
+    width: 100px;
+    height: 10px;
+    margin: 20px auto;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#loading-icon-content {
+    position: relative;
+    height: 100%;
+    width: 20%;
+    border-radius: 5px;
+    background-color: orange;
+    animation: loading-icon-animation 1.5s ease-in-out infinite alternate;
+    animation-play-state: paused;
+}
+
+#game-starting {
+    visibility: hidden;
+}
+
+@keyframes loading-icon-animation {
+        0% {
+            left: 0%;
+        }
+    
+        4% {
+            left: 0.064%;
+        }
+    
+        8% {
+            left: 0.08%;
+        }
+    
+        18% {
+            left: -0.416%;
+        }
+    
+        20% {
+            left: -0.312%;
+        }
+    
+        28% {
+            left: 1.88%;
+        }
+    
+        30% {
+            left: 1.912%;
+        }
+    
+        38% {
+            left: -7.416%;
+        }
+    
+        40% {
+            left: -9.4%;
+        }
+    
+        60% {
+            left: 89.4%;
+        }
+    
+        62% {
+            left: 87.416%;
+        }
+    
+        70% {
+            left: 70.088%;
+        }
+    
+        72% {
+            left: 78.12%;
+        }
+    
+        80% {
+            left: 80.312%;
+        }
+    
+        82% {
+            left: 80.416%;
+        }
+    
+        90% {
+            left: 79.976%;
+        }
+    
+        92% {
+            left: 79.2%;
+        }
+    
+        100% {
+            left: 80%;
+        }
+}

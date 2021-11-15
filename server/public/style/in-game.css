@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+/* Main */
+
+#in-game {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Task */
+
+#in-game-container {
+    height: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#timer {
+    font-size: var(--font-medium);
+}
+
+#word-definition {
+    font-size: var(--font-medium);
+}
+
+#word-hint {
+    font-size: var(--font-medium);
+}
+
+#input-solution {
+    display: block;
+    margin: 0 auto;
+}
+
+#input-solution:disabled {
+    background-color: gainsboro;
+}
+
+#form-word-game button {
+    padding: 5px 15px;
+    font-size: var(--font-small);
+    margin-top: 10px;
+}
+
+/* Chat */
+
+#in-game-chat-container {
+    height: 48%;
+}
+
+#in-game-chat {
+    height: 100%;
+    border: 3px solid var(--secondary-color);
+    width: 40%;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+#messages {
+    overflow: auto;
+    height: 90%;
+}
+
+#messages p {
+    padding: 10px 0;
+}
+
+#form-chat {
+    width: 100%;
+    height: 10%;
+    display: flex;
+}
+
+#input-chat {
+    flex-grow: 9;
+    border-left: none;
+    border-bottom: none;
+    font-size: var(--font-small);
+}
+
+#form-chat button {
+    flex-grow: 1;
+    border: none;
+    border-top: 3px solid var(--secondary-color);
+    font-size: var(--font-small);
+}

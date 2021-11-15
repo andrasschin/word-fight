@@ -1,0 +1,15 @@
+/* Header */
+
+header {
+    font-size: var(--font-large);
+}
+
+header > h1 {
+    padding-top: 10px;
+}
+
+/* Footer */
+
+footer p {
+    font-size: var(--font-small);
+}

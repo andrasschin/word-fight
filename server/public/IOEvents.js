@@ -10,3 +10,5 @@ export const gameRequestNextWord = "game:request-next-word";
 export const gameSendNextWord = "game:send-next-word";
 export const gameSubmitSolution = "game:submit-solution";
 export const gameEnd = "game:end";
+export const gameSendMessage = "game:send-message";
+export const gameReceiveMessage = "game:receive-message";

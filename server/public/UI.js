@@ -19,7 +19,7 @@ export class UI {
                 const loadingIconContent = this.mainMenu.querySelector("#loading-icon-content");
 
                 btnGameSearch.innerText = "In Queue";
-                loadingIconBox.style.display = "block";
+                loadingIconBox.style.visibility = "visible";
                 loadingIconContent.style.animationPlayState = "running";
                 
                 break;
@@ -27,7 +27,7 @@ export class UI {
 
             case IOEvents.gameInit: {
                 const gameStartingElement = this.mainMenu.querySelector("#game-starting");
-                gameStartingElement.innerText = "Starting game...";
+                gameStartingElement.style.visibility = "visible";
 
                 break;
             }
@@ -94,6 +94,13 @@ export class UI {
                 break;
             }
 
+            case IOEvents.gameReceiveMessage: {
+                const p = document.createElement("p");
+                p.innerText = data.message;
+                this.inGame.querySelector("#messages").appendChild(p);
+
+            }
+
             default:
                 break;
         }
@@ -102,7 +109,7 @@ export class UI {
     static #changeViewTo(toView) {
         this.#garbageCleaner(toView);
         this.currentView.style.display = "none";
-        toView.style.display = "block";
+        toView.style.display = "flex";
         this.currentView = toView;
     }
 
@@ -114,15 +121,16 @@ export class UI {
                 const loadingIconBox = this.mainMenu.querySelector("#loading-icon-box");
                 const loadingIconContent = this.mainMenu.querySelector("#loading-icon-content");
 
-                gameStartingElement.innerText = "";
+                gameStartingElement.style.visibility = "hidden";
                 btnSearchGame.innerText = "Search game";
-                loadingIconBox.style.display = "none";
+                loadingIconBox.style.visibility = "hidden";
                 loadingIconContent.style.animationPlayState = "paused";
                 
                 break;
             }
             
             case this.inGame: {
+                // TODO: Clear messages
                 break;
             }
 
