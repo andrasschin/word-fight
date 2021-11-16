@@ -70,9 +70,17 @@ export class UI {
                 const yourScore = this.postGame.querySelector("#your-score");
                 const opponentsScore = this.postGame.querySelector("#opponents-score");
 
-                if (data.you.score > data.opponent.score) result.innerText = "You won!";
-                else if (data.you.score === data.opponent.score) result.innerText = "It's a tie!";
-                else if (data.you.score < data.opponent.score) result.innerText = "You lost!";
+                if (data.you.score > data.opponent.score) {
+                    result.innerText = "You won!";
+                    result.classList.add("result-win");
+                }
+                else if (data.you.score === data.opponent.score) {
+                    result.innerText = "It's a tie!";
+                }
+                else if (data.you.score < data.opponent.score) {
+                    result.innerText = "You lost!";
+                    result.classList.add("result-lose");
+                }
                 else result.innerText = "Something went wrong and we don't know who won.";
 
                 yourScore.innerText = "Your score: " + data.you.score;
@@ -96,9 +104,16 @@ export class UI {
 
             case IOEvents.gameReceiveMessage: {
                 const p = document.createElement("p");
-                p.innerText = data.message;
+                
+                if (data.isSenderThisPlayer) {
+                    p.innerText = "You: " + data.message;
+                    p.classList.add("sent-by-this-player");
+                } else {
+                    p.innerText = "Opponent: " + data.message;
+                }
                 this.inGame.querySelector("#messages").appendChild(p);
 
+                break;
             }
 
             default:

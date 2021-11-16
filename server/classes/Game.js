@@ -15,7 +15,7 @@ class Game {
 
     constructor(gameId, playerOneId, playerTwoId) {
         this.gameId = gameId;
-        this.player1 = new Player(playerOneId); // TODO: make players an array
+        this.player1 = new Player(playerOneId);
         this.player2 = new Player(playerTwoId);
         this.words = [];
         this.nextWordIndex = 0;

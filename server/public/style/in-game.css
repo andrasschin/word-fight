@@ -24,6 +24,7 @@
 
 #word-definition {
     font-size: var(--font-medium);
+    padding: 0 10px;
 }
 
 #word-hint {
@@ -65,7 +66,7 @@
 }
 
 #messages p {
-    padding: 10px 0;
+    padding: 10px;
 }
 
 #form-chat {

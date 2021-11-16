@@ -4,7 +4,6 @@ import { UI } from "./UI.js";
 
 const socket = io();
 const btnSearchGame = document.getElementById("btn-search-game");
-const btnSubmitSolution = document.getElementById("btn-submit-solution");
 const btnHome = document.getElementById("btn-home");
 const inputSolution = document.getElementById("input-solution");
 
@@ -29,10 +28,11 @@ btnSearchGame.addEventListener("click", () => {
 
 socket.on(IOEvents.setupPlayer, socketId => {
     playerId = socketId;
-})
+});
 
 socket.on(IOEvents.gameInit, gameId => {
     currentGameId = gameId;
+    inQueue = false;
     UI.changeUI(IOEvents.gameInit);
 });
 
@@ -71,7 +71,10 @@ document.querySelector("#form-chat").addEventListener("submit", e => {
 });
 
 socket.on(IOEvents.gameReceiveMessage, payload => {
-    UI.changeUI(IOEvents.gameReceiveMessage, payload);
+    UI.changeUI(IOEvents.gameReceiveMessage, {
+        ...payload,
+        isSenderThisPlayer: payload.sender === playerId
+    });
 })
 
 socket.on(IOEvents.gameEnd, payload => {

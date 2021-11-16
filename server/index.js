@@ -54,6 +54,7 @@ io.on(IOEvents.connection, socket => {
             io.to(game.gameId).emit(IOEvents.gameEnd, game.getResults());
             const index = currentGames.findIndex(g => g.gameId === game.gameId);
             currentGames.splice(index, 1);
+            console.log(currentGames.length);
         } else if (nextWord !== Game.STATE.WAITING) {
             io.to(game.gameId).emit(IOEvents.gameSendNextWord, nextWord);
         }
@@ -65,7 +66,10 @@ io.on(IOEvents.connection, socket => {
     });
 
     socket.on(IOEvents.gameSendMessage, payload => {
-        io.to(payload.gameId).emit(IOEvents.gameReceiveMessage, { message: payload.message });
+        io.to(payload.gameId).emit(IOEvents.gameReceiveMessage, { 
+            sender: socket.id,
+            message: payload.message 
+        });
     });
 
     socket.on(IOEvents.disconnect, () => {
@@ -76,5 +80,10 @@ io.on(IOEvents.connection, socket => {
 })
 
 
-// TODO: chat, limit games, Page elrendezés, light and dark theme, upper/lower, form -> submit, socket code structure
+// TODO: limit games
+// TODO: light and dark theme
+// TODO: upper/lower
+// TODO: socket code structure
+// TODO: server side safety
+// ? players array in game
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

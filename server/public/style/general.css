@@ -3,9 +3,10 @@
 :root {
     --primary-color: #1480EC;
     --secondary-color: white;
-    --highlight-color-1: #EB6424;
-    --highlight-color-2: #FA9500;
-    --highlight-color-3: #48A9A6;
+    --highlight-color-1: #FA9500;
+    --highlight-color-2: #66CED6;
+    --highlight-color-3: #FF8C42;
+    --highlight-color-4: #9BC53D;
     --font-large: 28px;
     --font-medium: 22px;
     --font-small: 18px;
@@ -60,12 +61,12 @@ button:hover {
 
 a {
     text-decoration: none;
-    color: var(--highlight-color-2);
+    color: var(--highlight-color-1);
 }
 
 a:visited {
     text-decoration: none;
-    color: var(--highlight-color-2);
+    color: var(--highlight-color-1);
 }
 
 input {
@@ -78,6 +79,14 @@ input {
     padding: 5px 15px;
 }
 
-.sent-by-you {
-    color: var(--highlight-color-1);
+.sent-by-this-player {
+    color: var(--highlight-color-2);
+}
+
+.result-win {
+    color: var(--highlight-color-4);
+}
+
+.result-lose {
+    color: var(--highlight-color-3);
 }
