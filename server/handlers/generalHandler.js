@@ -1,10 +1,10 @@
-const StateManager = require("../StateManager");
+const StateManager = require("../ServerStateManager");
 const IOEvents = require("../constants/IOEvents");
 
-module.exports = (io, stateManager) => {
+module.exports = (io, ssm) => {
     const onDisconnect = function() {
-        stateManager.decreaseNumberOfPlayersOnline();
-        io.emit(IOEvents.updateNumberOfPlayersOnline, stateManager.getNumberOfPlayersOnline());
+        ssm.decreaseNumberOfPlayersOnline();
+        io.emit(IOEvents.updateNumberOfPlayersOnline, ssm.getNumberOfPlayersOnline());
     }
     
     return {

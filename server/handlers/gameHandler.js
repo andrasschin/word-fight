@@ -1,23 +1,23 @@
 const Game = require("../classes/Game");
 const IOEvents = require("../constants/IOEvents");
 
-module.exports = (io, stateManager) => {
+module.exports = (io, ssm) => {
     const searchGame = async function() {
         const socket = this;
 
-        if (stateManager.isQueueEmpty()) {
-            stateManager.addPlayerToQueue(socket);
+        if (ssm.isQueueEmpty()) {
+            ssm.addPlayerToQueue(socket);
         }
         else {
-            const playerInQueue = stateManager.getPlayerInQueue();
+            const playerInQueue = ssm.getPlayerInQueue();
             
-            if (stateManager.getPlayerInQueue().id !== socket.id) {
+            if (ssm.getPlayerInQueue().id !== socket.id) {
                 let game = new Game(playerInQueue.id, socket.id);
-                stateManager.addGame(game);
+                ssm.addGame(game);
                 playerInQueue.join(game.id);
                 socket.join(game.id);
                 io.to(game.id).emit(IOEvents.gameInit, game.id);
-                stateManager.removePlayerInQueue();
+                ssm.removePlayerInQueue();
     
                 await game.init();
                 io.to(game.id).emit(IOEvents.gameStart);
@@ -27,14 +27,14 @@ module.exports = (io, stateManager) => {
 
     const cancelSearch = function() {
         const socket = this;
-        if (!stateManager.isQueueEmpty() && stateManager.getPlayerInQueue().id === socket.id) {
-            stateManager.removePlayerInQueue();
+        if (!ssm.isQueueEmpty() && ssm.getPlayerInQueue().id === socket.id) {
+            ssm.removePlayerInQueue();
         }
     }
 
     const requestNextWord = function(gameId) {
         const socket = this;
-        const game = stateManager.findGame(gameId);
+        const game = ssm.findGame(gameId);
         game.setPlayerNextWordReady(socket.id);
         
         switch (game.state) {
@@ -46,7 +46,7 @@ module.exports = (io, stateManager) => {
             
             case Game.STATE.ENDED: {
                 io.to(game.id).emit(IOEvents.gameEnd, game.getResults());
-                stateManager.removeGame(game);
+                ssm.removeGame(game);
                 break;
             }
             
@@ -57,7 +57,7 @@ module.exports = (io, stateManager) => {
 
     const submitSolution = function(payload) {
         const socket = this;
-        const game = stateManager.findGame(payload.gameId);
+        const game = ssm.findGame(payload.gameId);
         game.submitSolution(socket.id, payload.solution);
     }
 
