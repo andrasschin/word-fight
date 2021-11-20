@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/general.css">
+    <link rel="stylesheet" href="./style/main-menu.css">
+    <link rel="stylesheet" href="./style/in-game.css">
+    <link rel="stylesheet" href="./style/post-game.css">
+    <link rel="stylesheet" href="./style/misc.css">
+
     <title>Word Fight</title>
     <script src="https://kit.fontawesome.com/c24d1452ef.js" crossorigin="anonymous"></script>
 </head>
@@ -16,33 +21,65 @@
     <main>
         <section id="main-menu">
             <h1>Main Menu</h1>
+
             <p>
-                Players online: <span id="number-of-players-online"></span>
+                Players online: <i class="fas fa-user"></i> <span id="number-of-players-online"></span>
             </p>
-            <button id="btn-search-game">Search game</button>
+            
+            <div>
+                <button id="btn-search-game">
+                    Search game
+                </button>
+            </div>
+            
             <div id="loading-icon-box">
                 <div id="loading-icon-content"></div>
             </div>
-            <p id="game-starting"></p>
+
+            <p id="game-starting">Game starting...</p>
         </section>
 
         <section id="in-game">
-            <p id="timer"></p>
-            <p id="word-definition"></p>
-            <p id="word-hint"></p>
-            <input type="text" id="input-solution">
-            <button id="btn-submit-solution">Send</button>
+            <div id="in-game-container">
+                <p id="timer"></p>
+
+                <p id="word-definition"></p>
+
+                <p id="word-hint"></p>
+
+                <form id="form-game" autocomplete="off">
+                    <input type="text" name="solution" id="input-game">
+
+                    <button id="btn-submit-solution">Send</button>
+
+                </form>
+            </div>
+
+            <div id="in-game-chat-container">
+                <div id="in-game-chat">
+                    <div id="messages">
+                        
+                    </div>
+                    
+                    <form id="form-chat" autocomplete="off">
+                        <input type="text" name="message" id="input-chat">
+                        <button>Send</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
         <section id="post-game">
             <h1>Post Game</h1>
-            <h2></h2>
+            
             <div id="scores">
-                <p id="your-score"></p>
-                <p id="opponents-score"></p>
+                <p id="player-score">Your score: 1</p>
+                <p id="opponent-score">Opponent's score: 1</p>
             </div>
-            <p id="result"></p>
-            <table id="post-game-summary">
+            
+            <p id="result">It's a tie!</p>
+            
+            <table id="summary">
                 <thead>
                     <tr>
                         <td>Definition</td>
@@ -52,20 +89,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
-            <button id="btn-home">Home</button>
+
+            <div>
+                <button id="btn-home">Home</button>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>Check out the project on <a href="https://github.com/itsmeeandrew/word-fight" target="_blank"><i class="fab fa-github"></i>Github</a>.</p>
+        <p>
+            Check out the project on 
+            <a href="https://github.com/itsmeeandrew/word-fight" target="_blank">
+                <i class="fab fa-github"></i> Github</a>.
+        </p>
     </footer>
     
     <script src="/socket.io/socket.io.js"></script>
-    <script type="module" src="IOEvents.js"></script>
-    <script type="module" src="updateEvents.js"></script>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>

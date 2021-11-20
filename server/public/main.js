@@ -1,101 +1,31 @@
-import { setupUpdateEvents } from "./updateEvents.js";
-import * as IOEvents from "./IOEvents.js";
-import { UI } from "./UI.js";
+import * as IOEvents from "./constants/IOEvents.js";
+import ClientStateManager from "./ClientStateManager.js";
+
+import generalHandlers from "./handlers/generalHandler.js";
+import gameHandlers from "./handlers/gameHandler.js";
+import registerEventListeners from "./handlers/eventListenerHandler.js";
 
 const socket = io();
-const btnSearchGame = document.getElementById("btn-search-game");
-const btnSubmitSolution = document.getElementById("btn-submit-solution");
-const btnHome = document.getElementById("btn-home");
-const inputSolution = document.getElementById("input-solution");
+const csm = new ClientStateManager();
 
-setupUpdateEvents(socket);
+registerEventListeners(socket, csm);
 
-let currentGameId = "";
-let currentTimeoutId;
-let playerId;
-let inQueue = false;
+const {
+    setupPlayer,
+    updateNumberOfPlayersOnline } = generalHandlers(csm);
 
-btnSearchGame.addEventListener("click", () => {      
-    if (!inQueue) {
-        inQueue = true;
-        socket.emit(IOEvents.gameSearch);
-        UI.changeUI(IOEvents.gameSearch);
-    } else {
-        inQueue = false;
-        socket.emit(IOEvents.gameCancelSearch);
-        UI.home();
-    }
-});
+const { 
+    initGame,
+    startGame,
+    sendNextWord,
+    recieveMessage,
+    endGame } = gameHandlers(socket, csm);
 
-socket.on(IOEvents.setupPlayer, socketId => {
-    playerId = socketId;
-})
+socket.on(IOEvents.setupPlayer, setupPlayer);
+socket.on(IOEvents.updateNumberOfPlayersOnline, updateNumberOfPlayersOnline);
 
-socket.on(IOEvents.gameInit, gameId => {
-    currentGameId = gameId;
-    UI.changeUI(IOEvents.gameInit);
-});
-
-socket.on(IOEvents.gameStart, () => {
-    UI.changeUI(IOEvents.gameStart);
-    socket.emit(IOEvents.gameRequestNextWord, currentGameId);
-    UI.changeUI(IOEvents.gameRequestNextWord);
-});
-
-socket.on(IOEvents.gameSendNextWord, payload => {
-    UI.changeUI(IOEvents.gameSendNextWord, payload);
-    inputSolution.disabled = false;
-    currentTimeoutId = setTimeout(() => {
-        inputSolution.disabled = true;
-        sendSolution(inputSolution.value);
-    }, 15000);
-});
-
-btnSubmitSolution.addEventListener("click", () => {
-    inputSolution.disabled = true;
-    const solution = inputSolution.value;
-    sendSolution(solution);
-});
-
-document.addEventListener("keypress", e => {
-    if (e.key === 'Enter') {
-        inputSolution.disabled = true;
-        const solution = inputSolution.value;
-        sendSolution(solution);
-    }
-})
-
-socket.on(IOEvents.gameEnd, payload => {
-    if (payload.player1.id === playerId) {
-        renameKeyInObj(payload, "player1", "you");
-        renameKeyInObj(payload, "player2", "opponent");
-    } else {
-        renameKeyInObj(payload, "player1", "opponent");
-        renameKeyInObj(payload, "player2", "you");
-    }
-    console.log(payload);
-
-    UI.changeUI(IOEvents.gameEnd, payload);
-})
-
-btnHome.addEventListener("click", () => {
-    UI.home();
-})
-
-function sendSolution(solution) {
-    clearTimeout(currentTimeoutId);
-    const payload = {
-        gameId: currentGameId,
-        solution
-    }
-    socket.emit(IOEvents.gameSubmitSolution, payload);
-    socket.emit(IOEvents.gameRequestNextWord, currentGameId);
-    UI.changeUI(IOEvents.gameRequestNextWord);
-    inputSolution.value = "";
-}
-
-function renameKeyInObj(obj, oldKey, newKey) {
-    Object.defineProperty(obj, newKey,
-        Object.getOwnPropertyDescriptor(obj, oldKey));
-    delete obj[oldKey];
-}
+socket.on(IOEvents.gameInit, initGame);
+socket.on(IOEvents.gameStart, startGame);
+socket.on(IOEvents.gameSendNextWord, sendNextWord);
+socket.on(IOEvents.gameReceiveMessage, recieveMessage);
+socket.on(IOEvents.gameEnd, endGame)
