@@ -1,7 +1,7 @@
 export const connection = "connection";
 export const disconnect = "disconnect";
 export const setupPlayer = "setup-player";
-export const updateNumOfPlayersOnline = "update:number-of-players-online";
+export const updateNumberOfPlayersOnline = "update:number-of-players-online";
 export const gameSearch = "game:search";
 export const gameCancelSearch = "game:cancel-search";
 export const gameInit = "game:init";

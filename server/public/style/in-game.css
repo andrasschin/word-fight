@@ -31,16 +31,16 @@
     font-size: var(--font-medium);
 }
 
-#input-solution {
+#input-game {
     display: block;
     margin: 0 auto;
 }
 
-#input-solution:disabled {
+#input-game:disabled {
     background-color: gainsboro;
 }
 
-#form-word-game button {
+#form-game button {
     padding: 5px 15px;
     font-size: var(--font-small);
     margin-top: 10px;

@@ -90,3 +90,7 @@ input {
 .result-lose {
     color: var(--highlight-color-3);
 }
+
+.result-tie {
+    color: var(--secondary-color);
+}

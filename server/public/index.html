@@ -41,14 +41,14 @@
 
         <section id="in-game">
             <div id="in-game-container">
-                <p id="timer">15</p>
+                <p id="timer"></p>
 
-                <p id="word-definition">Something that shows us how important beauty is.</p>
+                <p id="word-definition"></p>
 
-                <p id="word-hint">__T__A</p>
+                <p id="word-hint"></p>
 
-                <form id="form-word-game" autocomplete="off">
-                    <input type="text" id="input-solution">
+                <form id="form-game" autocomplete="off">
+                    <input type="text" name="solution" id="input-game">
 
                     <button id="btn-submit-solution">Send</button>
 
@@ -73,13 +73,13 @@
             <h1>Post Game</h1>
             
             <div id="scores">
-                <p id="your-score">Your score: 1</p>
-                <p id="opponents-score">Opponent's score: 1</p>
+                <p id="player-score">Your score: 1</p>
+                <p id="opponent-score">Opponent's score: 1</p>
             </div>
             
             <p id="result">It's a tie!</p>
             
-            <table id="post-game-summary">
+            <table id="summary">
                 <thead>
                     <tr>
                         <td>Definition</td>
@@ -108,8 +108,6 @@
     </footer>
     
     <script src="/socket.io/socket.io.js"></script>
-    <script type="module" src="IOEvents.js"></script>
-    <script type="module" src="updateEvents.js"></script>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="./main.js"></script>
 </body>
 </html>
