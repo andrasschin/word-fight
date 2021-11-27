@@ -39,9 +39,4 @@ const onConnection = socket => {
 
 io.on(IOEvents.connection, onConnection);
 
-// TODO: limit games
-// TODO: light and dark theme
-// TODO: server side safety
-// ? names
-// ? players array in game
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

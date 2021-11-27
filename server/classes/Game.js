@@ -4,7 +4,7 @@ const Word = require("./Word");
 const APIHandler = require("./APIHandler");
 
 class Game {
-    static NUM_OF_WORDS = 3;
+    static NUM_OF_WORDS = 10;
     static STATE = {
         INSTANTIATED: "INSTANTIATED",
         INITIALIZING: "INITIALIZING",
