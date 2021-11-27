@@ -1,6 +1,6 @@
 const Game = require("./classes/Game");
 
-class StateManager {
+class ServerStateManager {
     #games = [];
     #playerInQueue = null;
     #numberOfPlayersOnline = 0;
@@ -61,4 +61,4 @@ class StateManager {
     }
 }
 
-module.exports = StateManager;
+module.exports = ServerStateManager;

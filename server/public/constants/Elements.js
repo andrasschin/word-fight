@@ -17,7 +17,7 @@ export const inGame = {
     pWordDefinition: getInGameElem("#word-definition"),
     pWordHint: getInGameElem("#word-hint"),
     formGame: getInGameElem("#form-game"),
-    inputGame: getInGameElem("#input-game"), // TODO: Refactor
+    inputGame: getInGameElem("#input-game"),
     divMessages: getInGameElem("#messages"),
     formChat: getInGameElem("#form-chat"),
     inputChat: getInGameElem("#input-chat")

@@ -79,8 +79,9 @@ input {
     padding: 5px 15px;
 }
 
-.sent-by-this-player {
+.sent-by-player {
     color: var(--highlight-color-2);
+    font-weight: bolder;
 }
 
 .result-win {

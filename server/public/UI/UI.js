@@ -94,7 +94,7 @@ export default class UI {
                 
                 if (data.isSenderThisPlayer) {
                     pMessage.innerText = "You: " + data.message;
-                    pMessage.classList.add("sent-by-this-player");
+                    pMessage.classList.add("sent-by-player");
                 } else {
                     pMessage.innerText = "Opponent: " + data.message;
                 }
