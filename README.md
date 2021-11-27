@@ -1,4 +1,4 @@
-# word-fight
+# Word Fight
 A small multiplayer browser-based game around words and their definitons.
 
 Project status: COMPLETED
