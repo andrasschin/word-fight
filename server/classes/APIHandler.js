@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 class APIHandler {
-    static randomWordsAPIBase = "https://random-word-api.herokuapp.com/word?swear=0&number=1";
+    static randomWordsAPIBase = "https://random-word-api.herokuapp.com/word";
     static dictionaryAPIBase = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     static badRequestMessage = "No Definitions Found";
 
